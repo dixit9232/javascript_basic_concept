@@ -22,4 +22,5 @@ console.log($cityName);
  * We are never use a number and special symbol (exclude $) to define variable
  * 
  * 
+ * 
  *  */ 
