@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Object Model</title>
+    <style>
+      * {
+        font-family: "Mona Sans";
+      }
+      p {
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Document Object Model</h1>
+    <hr />
+    <p class="p-0">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum expedita
+      eos accusantium reiciendis mollitia ad officiis facilis qui corporis omnis
+      fugiat unde ea eveniet quisquam quasi praesentium, rem enim? Aut. Lorem
+      ipsum dolor sit amet consectetur adipisicing elit. Illo voluptatem eos
+      neque ad veniam sequi. Iste dolorum tenetur molestias, iusto totam aliquid
+      unde laborum provident incidunt, aliquam nesciunt nisi possimus! Lorem
+    </p>
+
+    <script>
+      const parent = document;
+      console.log(parent);
+
+      const head = document.head;
+      console.log(head);
+
+      const body = document.body;
+      console.log(body);
+
+      // const bodyChild = body.childNodes;
+      const bodyChild = body.children;
+      console.log(bodyChild);
+
+      //const firstChild = body.firstChild;
+      const firstChild = body.firstElementChild;
+      console.log(firstChild);
+
+      const lastChild = body.lastElementChild;
+      console.log(lastChild);
+
+      const nextSibling =firstChild.nextElementSibling;
+      console.log(nextSibling);
+
+      const previousSibling = nextSibling.previousElementSibling;
+      console.log(previousSibling);
+
+      const parentElement = firstChild.parentElement;
+      console.log(parentElement);
+
+      const closest = body.closest('.p-0')
+      console.log(closest);
+      
+
+
+
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Search</title>
+  </head>
+  <body>
+    <h1 id="heading">DOM API 1</h1>
+    <div>
+      <ul class="node-list">
+        <li>Node 1</li>
+        <li>Node 2</li>
+        <li>Node 3</li>
+        <!-- <li>Node 4</li> -->
+        <li>Node 4</li>
+        <li style="display: none">Node 5</li>
+      </ul>
+    </div>
+
+    <h1>DOM API 2</h1>
+
+    <div class="container"><input type="text" /> <button>Click me</button></div>
+
+    <script>
+      const heading = document.getElementById("heading");
+      // console.log(heading);
+      // console.log(heading.innerHTML);
+      // console.log(heading.innerText);
+      // console.log(heading.textContent);
+
+      const findByClassName = document.getElementsByClassName("node-list");
+      // console.log(...findByClassName);
+      //   for (let element of findByClassName) {
+      //     console.log(element.innerHTML);
+      //     console.log(element.innerText);
+      //     console.log(element.textContent);
+      //   }
+
+      const findByElementName = document.getElementsByTagName("li");
+      //   for (let element of findByElementName) {
+      //     console.log(element);
+      //     console.log(element.innerHTML);
+      //     console.log(element.innerText);
+      //     console.log(element.textContent);
+      //   }
+
+      const findByQuerySelector = document.querySelector("#heading");
+    //   console.log(findByQuerySelector);
+
+
+    const findByQuerySelectorAll = document.querySelectorAll("li");
+    // console.log(...findByQuerySelectorAll);
+    
+
+
+    </script>
+  </body>
+</html>

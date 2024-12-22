@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100%;
+        margin: 50px 45%;
+        height: 100vh;
+        background-color: #0e0e0e;
+        color: white;
+      }
+      h1 {
+        padding-bottom: 20px;
+      }
+      input {
+        border: 1px solid white;
+      }p{
+        padding: 10px 0 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Simple TODO List App</h1>
+      <input type="text" id="input-filed" />
+      <button class="btn">Click Me</button>
+      <div class="to-do--list"></div>
+    </div>
+    <script>
+      const inputField = document.getElementById("input-filed");
+      const button = document.querySelector(".btn");
+      const toDoElement = document.querySelector(".to-do--list");
+
+      button.addEventListener("click", () => {
+        addToDo();
+      });
+
+      const addToDo = () => {
+        const text = inputField.value.trim();
+        const TODO = document.createElement("p");
+        TODO.textContent = text;
+        toDoElement.append(TODO);
+        inputField.value = "";
+      };
+
+      toDoElement.addEventListener('click' , (event) => {
+        const selectedElement = event.target;
+        selectedElement.remove();
+      })
+
+
+    </script>
+  </body>
+</html>
