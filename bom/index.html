@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript BOM Method</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        background-color: black;
+        font-family: "Mona Sans";
+      }
+      body {
+        padding: 20px;
+      }
+      h1 {
+        color: white;
+        padding-bottom: 50px;
+        font-size: 20px;
+      }
+      h2 {
+        color: white;
+        padding-bottom: 20px;
+        font-size: 20px;
+      }
+      button {
+        padding: 10px 80px;
+        background-color: #4caf50;
+        border-radius: 20px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        &:hover {
+          border: 1px solid #4caf50;
+          background-color: transparent;
+          color: #4caf50;
+          transition: all 0.3s linear;
+        }
+      }
+      br {
+        height: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Js Window Object</h1>
+    <button onclick="alert('Hello World')" ,>Alert</button>
+    <br />
+    <br />
+    <button
+      onclick="window.open('https\://github.com/dixit9232/CSS-Final-Website/blob/master/css/style.css#L4C2-L5C10','_blank')"
+      ,
+    >
+      Navigate
+    </button>
+    <br /><br />
+    <h2>History object</h2>
+    <button onclick="history.back()">Go Back</button>
+    <button onclick="history.forward()">Go Forward</button>
+    <button onclick="history.go(-1)">Move Backward or Forward</button>
+    <br /><br />
+
+    <h2>Location Object</h2>
+    <button onclick="location.reload()">Reload Page</button>
+    <button onclick="location.replace('https\://github.com/dixit9232/CSS-Final-Website/blob/master/css/style.css#L4C2-L5C10')">Navigate Page Using Replace</button>
+    <button onclick="location.assign('https\://github.com/dixit9232/CSS-Final-Website/blob/master/css/style.css#L4C2-L5C10')">Navigate Page Using Assign</button>
+
+    <!-- <script>window.alert("Hello World");</script> -->
+  </body>
+</html>
