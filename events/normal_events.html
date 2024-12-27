@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Normal events</title>
+    <style>
+        /* Reset default margin and padding, and set box-sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Mona Sans";
+            /* Set font family */
+        }
+
+        html {
+            font-size: 62.5%;
+            /* Set base font size for rem units */
+        }
+
+        body {
+            background-color: #0e0e0e;
+            /* Dark background color */
+            color: white;
+            /* White text color */
+            width: 100%;
+            height: 100vh;
+            /* Full viewport height */
+            display: grid;
+            /* Use grid layout */
+            gap: 5rem;
+            /* Space between grid items */
+            place-items: center;
+            /* Center items in the grid */
+            align-content: center;
+            /* Center content vertically */
+        }
+
+        h1 {
+            font-size: 5rem;
+            /* Large font size for headings */
+            margin: 1rem;
+            /* Margin around headings */
+        }
+
+        button {
+            padding: 1.5rem 5rem;
+            /* Padding inside buttons */
+            font-size: 2rem;
+            /* Font size for button text */
+            color: aliceblue;
+            /* Text color for buttons */
+            background-color: #000;
+            /* Black background for buttons */
+            position: relative;
+            /* Positioning context for z-index */
+            z-index: 0;
+            /* Default stacking order */
+            border: none;
+            /* Remove default border */
+            border-radius: 1rem;
+            /* Rounded corners for buttons */
+            transition: all 0.2s linear;
+            /* Smooth transition for hover effects */
+            cursor: pointer;
+            /* Change cursor to pointer on hover */
+        }
+
+        button:hover {
+            background-color: aliceblue;
+            /* Change background on hover */
+            color: black;
+            /* Change text color on hover */
+        }
+
+        div {
+            display: flex;
+            /* Use flexbox for button container */
+            gap: 2rem;
+            /* Space between buttons */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ========== Inline Event Start Section ========== -->
+    <h1>Inline Events</h1>
+    <div>
+        <!-- Inline event handlers directly in HTML -->
+        <button onclick="alert('Inline Event On Click is called')">
+            onClick
+        </button>
+        <button ondblclick="alert('Inline Event On double Click is called')">
+            onDoubleClick
+        </button>
+        <button onmouseover="alert('Inline Event On Mouse Over is called')">
+            onMouseHover
+        </button>
+    </div>
+    <!-- ========== Inline Event End Section ========== -->
+
+    <!-- ========== Script Level Event Start Section ========== -->
+    <h1>Script Level Events</h1>
+    <div>
+        <!-- Buttons with event handlers defined in JavaScript -->
+        <button id="btn1">onClick</button>
+        <button id="btn2">onDoubleClick</button>
+        <button id="btn3">onMouseHover</button>
+    </div>
+    <!-- ========== Script Level Event End Section ========== -->
+
+    <!-- ========== Add Event Listener Start Section ========== -->
+    <h1>Add Event Listener Events</h1>
+    <div>
+        <!-- Buttons with event listeners added via JavaScript -->
+        <button id="btn4">onClick</button>
+        <button id="btn5">onDoubleClick</button>
+        <button id="btn6">onMouseHover</button>
+    </div>
+    <!-- ========== Add Event Listener End Section ========== -->
+</body>
+
+<script>
+    // Script Level Events
+    document.getElementById("btn1").onclick = () => {
+        alert("Script level On Click is called");
+    };
+    document.getElementById('btn2').ondblclick = () => {
+        alert("Script level on DoubleClick is called");
+    };
+    document.getElementById("btn3").onmouseover = () => {
+        alert("Script level On Mouse Hover is called");
+    }
+
+    // Add Event Listener Events
+    document.getElementById("btn4").addEventListener('click', () => {
+        alert("Add Event Listener On Click is called");
+    });
+
+    document.getElementById("btn5").addEventListener('dblclick', () => {
+        alert("Add Event Listener on DoubleClick is called");
+    });
+
+    document.getElementById("btn6").addEventListener('mouseover', () => {
+        alert("Add Event Listener On Mouse Hover is called");
+    });
+</script>
+
+</html>
