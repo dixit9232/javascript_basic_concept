@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard Event</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Mona Sans";
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        background-color: #0e0e0e;
+        height: 100vh;
+        width: 100%;
+      }
+
+      .section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      
+      }
+
+      input {
+        border: 0.1rem solid white;
+        height: 3rem;
+        width: 20%;
+        border-radius: 1rem;
+        background-color: transparent;
+        caret-color: white;
+        color: white;
+        font-size: 2rem;
+        padding: 2rem 1.5rem;
+      }
+
+      .output {
+        margin-top: 2rem;
+        background-color: #1b1b1b;
+        width: 20%;
+        border-left: 0.2rem solid yellow;
+        display: grid;
+        gap: 2rem;
+        font-size: 1.8rem;
+        color: aliceblue;
+        letter-spacing: 0.1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+         overflow:  auto;
+      }
+
+      .eventType {
+        color: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="section">
+      <input
+        type="text"
+        id="inputField"
+        name="UserName"
+        placeholder="Type something...."
+        autocomplete="off"
+      />
+      <div class="output">
+        <p class="inputValue">Input Value:</p>
+        <p class="inputName">Input Name:</p>
+        <p class="inputType">Input Type:</p>
+        <p class="eventType">Event Type:</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    const inputField = document.getElementById("inputField");
+    const inputValue = document.querySelector(".inputValue");
+    const inputName = document.querySelector(".inputName");
+    const inputType = document.querySelector(".inputType");
+    const eventType = document.querySelector(".eventType");
+
+    const handelInput = (event) => {
+      console.log(event);
+      const { target } = event;
+      inputValue.textContent = `Input Value: ${target.value}`;
+      inputName.textContent = `Input Name: ${target.name}`;
+      inputType.textContent = `Input Type: ${event.inputType}`;
+      eventType.textContent = `Event Type: ${event.type}`;
+    };
+
+    // inputField.addEventListener("input", handelInput);
+    inputField.addEventListener("change", handelInput);
+  </script>
+</html>

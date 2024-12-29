@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard Event</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Mona Sans";
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        background-color: #0e0e0e;
+        height: 100vh;
+        width: 100%;
+      }
+      .section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      input {
+        border: 0.1rem solid white;
+        height: 3rem;
+        width: 20%;
+        border-radius: 1rem;
+        background-color: transparent;
+        caret-color: white;
+        color: white;
+        font-size: 2rem;
+        padding: 2rem 1.5rem;
+      }
+      .output {
+        margin-top: 2rem;
+        background-color: #1b1b1b;
+        width: 20%;
+        border-left: 0.2rem solid yellow;
+        display: grid;
+        gap: 2rem;
+        font-size: 1.8rem;
+        color: aliceblue;
+        letter-spacing: 0.1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+      }
+      .eventType {
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <input
+        type="text"
+        id="inputField"
+        placeholder="Type something...."
+        ,
+        autocomplete="off"
+        ,
+      />
+      <div class="output">
+        <p class="keyPressed">Key Pressed:</p>
+        <p class="keyCode">Key Code:</p>
+        <p class="charCode">Character Code:</p>
+        <p class="eventType">Event Type:</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    const inputField = document.getElementById("inputField");
+    const keyPressed = document.querySelector(".keyPressed");
+    const keyCode = document.querySelector(".keyCode");
+    const charCode = document.querySelector(".charCode");
+    const eventType = document.querySelector(".eventType");
+
+    const handleKeyDown = (event) => {
+  
+
+      keyPressed.textContent = `Key Pressed: ${event.key}`;
+      keyCode.textContent = `Key Code: ${event.code}`;
+      charCode.textContent = `Character Code: ${event.key.charAt(0)}`;
+      eventType.textContent = `Event Type: ${event.type}`;
+    };
+
+    // inputField.addEventListener("keydown", handleKeyDown);
+    inputField.addEventListener("keyup", handleKeyDown);
+  </script>
+</html>
