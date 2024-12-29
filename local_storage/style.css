@@ -68,7 +68,7 @@ button {
 }
 .addedTodo {
   max-width: 50rem;
-  aspect-ratio: 1;
+  aspect-ratio: 1.5;
   overflow: auto;
 }
 
@@ -87,7 +87,7 @@ button {
   text-overflow: ellipsis;
   overflow: hidden;
   list-style: outside;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 ::-webkit-scrollbar {

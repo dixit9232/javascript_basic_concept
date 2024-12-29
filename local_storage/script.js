@@ -57,15 +57,19 @@ const handleAddButton = () => {
 // delete element from local storage and html
 const handleDeleteButton = (element) => {
   try {
-    const targetElement = element.target;
-    const previousElement = targetElement.previousElementSibling;
-    const text = previousElement.innerText;
-    const parentElement = previousElement.parentElement;
+  
+    
+    if (element.target.classList.contains("delete-button")) {
+      const targetElement = element.target;
+      const previousElement = targetElement.previousElementSibling;
+      const text = previousElement.innerText;
+      const parentElement = previousElement.parentElement;
 
-    if (todos.includes(text)) {
-      todos = todos.filter((element) => element !== text);
-      localStorage.setItem("todo", JSON.stringify(todos));
-      parentElement.remove();
+      if (todos.includes(text)) {
+        todos = todos.filter((element) => element !== text);
+        localStorage.setItem("todo", JSON.stringify(todos));
+        parentElement.remove();
+      }
     }
   } catch (e) {
     console.log(e);
