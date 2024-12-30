@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Mona Sans";
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        height: 100vh;
+        width: 100%;
+        background-color: #2a2a2a;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+      }
+
+      .container {
+        width: 30%;
+        aspect-ratio: 1;
+        font-size: 10rem;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        flex-direction: column;
+        border-radius: 1rem;
+        color: white;
+        border: 0.3rem solid #ff0000;
+        place-items: center;
+        gap: 2rem;
+      }
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      .buttons button:last-child {
+        justify-self: center;
+        grid-column: 1/-1;
+      }
+      button {
+        padding: 1rem 4rem;
+        outline: none;
+        border: 0.2rem solid transparent;
+        border-radius: 1rem;
+        font-size: 1.6rem;
+        cursor: pointer;
+        background-color: #c52828;
+        color: white;
+        font-weight: 400;
+        letter-spacing: 0.12rem;
+        transition: all 0.3s linear;
+        &:hover {
+          background-color: transparent;
+          color: #c52828;
+          border: 0.2rem solid #c52828;
+        }
+      }
+      .lep-list {
+        height: 50%;
+        width: 60%;
+        overflow: auto;
+        color: #c52828;
+        font-size: 1.7rem;
+        padding: 0 2rem;
+        &::-webkit-scrollbar-thumb {
+          background-color: #c52828;
+          border-radius: 30rem;
+        }
+        &::-webkit-scrollbar {
+          width: 0.5rem;
+          border-radius: 50%;
+        }
+        &::-webkit-scrollbar-track {
+          border-radius: 30rem;
+          background-color: #8d5151;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <p id="timer">00:00:00</p>
+      <div class="buttons">
+        <button class="start">Start</button>
+        <button class="reset">Reset</button>
+        <button class="stop">Stop</button>
+        <button class="lep">Lep</button>
+        <button class="clear">Clear</button>
+      </div>
+      <div class="lep-list"></div>
+    </div>
+
+    <script>
+      // get reference to all the buttons
+      const startButton = document.querySelector(".start");
+      const resetButton = document.querySelector(".reset");
+      const stopButton = document.querySelector(".stop");
+      const lepButton = document.querySelector(".lep");
+      const clearButton = document.querySelector(".clear");
+
+      // get reference to the timer element
+      const timer = document.getElementById("timer");
+
+      // get reference to the lep list element
+      const lepList = document.querySelector(".lep-list");
+      // define all the variable
+      let time = 0;
+      let intervalId;
+      let hour = "00";
+      let minute = "00";
+      let second = "00";
+      let timerStop = true;
+
+      // start timer function
+      const startTimer = () => {
+        if (timerStop) {
+          timerFunction();
+          timerStop = false;
+          intervalId = setInterval(timerFunction, 1000);
+        }
+      };
+
+      // timer function
+      const timerFunction = () => {
+        time++;
+        hour = Math.floor(time / 3600);
+        minute = Math.floor((time % 3600) / 60);
+        second = time % 60;
+        timer.innerText = `${hour.toString().padStart(2, "0")}:${minute
+          .toString()
+          .padStart(2, "0")}:${second.toString().padStart(2, "0")}`;
+      };
+
+      // Stop timer function
+      const stopTimer = () => {
+        if (intervalId) {
+          timerStop = true;
+          clearInterval(intervalId);
+        }
+      };
+
+      // note a lep time function
+      const lepTimer = () => {
+        if (time !== 0) {
+          const p = document.createElement("p");
+          p.innerText = `The Lep is on ${hour
+            .toString()
+            .padStart(2, "0")}:${minute.toString().padStart(2, "0")}:${second
+            .toString()
+            .padStart(2, "0")}`;
+          lepList.appendChild(p);
+        }
+      };
+
+      // reset timer function
+      const resetTimer = () => {
+        time = 0;
+        hour = "00";
+        minute = "00";
+        second = "00";
+        timerStop = true;
+        clearInterval(intervalId);
+        timer.innerText = "00:00:00";
+      };
+
+      // clear lep elements
+      const clearLep = () => {
+        lepList.innerHTML = "";
+      };
+
+      // start button click event
+      startButton.addEventListener("click", startTimer);
+      // stop button click event
+      stopButton.addEventListener("click", stopTimer);
+      // lep button click event
+      lepButton.addEventListener("click", lepTimer);
+      // reset button click event
+      resetButton.addEventListener("click", resetTimer);
+      // clear lep button click event
+      clearButton.addEventListener("click", clearLep);
+    </script>
+  </body>
+</html>
