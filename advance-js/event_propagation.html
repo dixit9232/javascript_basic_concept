@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Propagation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container" id="outer">
+      Outer
+      <div class="container" id="middle">
+        Middle
+        <div class="container" id="inner">Inner</div>
+      </div>
+    </div>
+
+    <script>
+      // to stop event propagation use event.stopPropagation() method
+      const clickOuterBox = (event) => {
+        console.table([
+          {
+            description: "Outer box is clicked",
+            target: event.target,
+            currentTarget: event.currentTarget,
+          },
+        ]);
+      };
+
+      const clickMiddleBox = (event) => {
+        console.table([
+          {
+            description: "Middle box is clicked",
+            target: event.target,
+            currentTarget: event.currentTarget,
+          },
+        ]);
+      };
+      const clickInnerBox = (event) => {
+        console.table([
+          {
+            description: "Inner box is clicked",
+            target: event.target,
+            currentTarget: event.currentTarget,
+          },
+        ]);
+        // event.stopPropagation();
+      };
+
+      // bubbling in JS
+      // document.getElementById("outer").addEventListener("click", clickOuterBox);
+      // document
+      //   .getElementById("middle")
+      //   .addEventListener("click", clickMiddleBox);
+      // document.getElementById("inner").addEventListener("click", clickInnerBox);
+
+      /// capturing in JS
+
+      document
+        .getElementById("outer")
+        .addEventListener("click", clickOuterBox, true);
+      document
+        .getElementById("middle")
+        .addEventListener("click", clickMiddleBox, true);
+      document
+        .getElementById("inner")
+        .addEventListener("click", clickInnerBox, true);
+    </script>
+  </body>
+</html>

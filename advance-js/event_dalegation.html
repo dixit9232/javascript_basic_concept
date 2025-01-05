@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Delegation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Bricolage Grotesque";
+      }
+      html {
+        font-size: 62.5%;
+      }
+      body {
+        height: 100vh;
+        width: 100%;
+        background-color: #0b0b0b;
+        display: grid;
+        place-content: center;
+      }
+      p {
+        margin: 1rem 0;
+        font-size: 2rem;
+        color: darksalmon;
+        place-self: center;
+      }
+      ul {
+        display: grid;
+        place-content: center;
+        color: white;
+      }
+      li {
+        display: grid;
+        place-content: center;
+        list-style: none;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        padding: 1.5rem 2rem;
+        border: 0.2rem solid white;
+        transition: all 0.3s linear;
+        cursor: pointer;
+        &:hover {
+          background-color: white;
+          color: #0b0b0b;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>What is your favourite programming language?</p>
+      <ul class="listOfLanguage">
+        <li>🎉 HTML & CSS 🎉</li>
+        <li>🎈 React.js 🎈</li>
+        <li>✨ Node.js ✨</li>
+        <li>👑 Python 👑</li>
+      </ul>
+      <p id="favLanguageName"></p>
+    </div>
+
+    <script>
+      const clickOnListItem = (event) => {
+        if (event.target.localName === "li") {
+           const listItem = event.target;
+           listItem.style.transform = 'rotateY(-360deg)';
+         
+
+          document.getElementById(
+            "favLanguageName"
+          ).innerText = `Your fav language is ${event.target.innerText}`;
+       
+        }
+      };
+
+      document
+        .querySelector(".listOfLanguage")
+        .addEventListener("click", clickOnListItem);
+    </script>
+  </body>
+</html>
