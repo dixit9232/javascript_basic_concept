@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async-Await Using API</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Mona Sans";
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        color: antiquewhite;
+        background-color: #0b0b0b;
+        display: grid;
+        place-content: center;
+        gap: 2rem;
+        height: 100vh;
+      }
+
+      h1 {
+        font-size: 5rem;
+        place-self: center;
+        margin-bottom: 1rem;
+      }
+
+      .api-body {
+        place-self: center;
+        font-size: 2.7rem;
+      }
+
+      button {
+        place-self: center;
+        width: 50%;
+        background-color: #92365d;
+        border-radius: 5rem;
+        border: 0.2rem solid #92365d;
+        padding: 1.5rem;
+        font-size: 1.6rem;
+        color: white;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>What is a Async-Await?</h1>
+
+    <section class="api-body"></section>
+
+    <button id="btn">Get The Joke</button>
+  </body>
+  <script>
+    const jokeSection = document.querySelector(".api-body");
+    const jokeAPI = "https://icanhazdadjoke.com/";
+    const fetchJokes = async () => {
+      const response = await fetch(jokeAPI, {
+        headers: {
+          Accept: "application/json",
+        },
+      });
+      const data = await response.json();
+      jokeSection.innerHTML =data.joke;
+    };
+    fetchJokes();
+    document.getElementById("btn").addEventListener("click", fetchJokes);
+  </script>
+</html>
